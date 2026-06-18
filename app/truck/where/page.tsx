@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: "Today's location and this week's schedule for the La Cocina de Jeannie food truck.",
 };
 
-// PLACEHOLDER schedule. Wire this to a Supabase `truck_schedule` table
+// PLACEHOLDER schedule. Wire to a Supabase `truck_schedule` table
 // (date, location_name, lat, lng, start_time, end_time, status) that Jeannie
 // updates from her phone. Drives the live status, map pin, and 7-day list.
 const schedule = [
@@ -18,47 +18,40 @@ const schedule = [
 
 export default function Where() {
   return (
-    <section className="bg-white">
+    <section className="bg-cream">
       <div className="shell py-14">
-        {/* Live status */}
-        <div className="flex flex-col items-start gap-3 rounded-2xl bg-flag-blue p-6 text-white sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col items-start gap-3 bg-truck-blue p-6 text-white sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
             <span className="relative flex h-3 w-3">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-flag-yellow opacity-75" />
-              <span className="relative inline-flex h-3 w-3 rounded-full bg-flag-yellow" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-truck-gold opacity-75" />
+              <span className="relative inline-flex h-3 w-3 rounded-full bg-truck-gold" />
             </span>
-            <p className="font-display text-xl font-bold">
-              Open now — Placeholder lot, until 8:00p
-            </p>
+            <p className="font-display text-xl font-bold">Open now — Placeholder lot, until 8:00p</p>
           </div>
           <span className="font-body text-sm text-white/80">Updated by Jeannie</span>
         </div>
 
-        {/* Map + schedule */}
         <div className="mt-8 grid gap-6 md:grid-cols-[1.4fr_1fr]">
-          <div className="photo-ph aspect-[16/10] w-full border-2 border-flag-blue/20">
-            <span className="!text-flag-blue/60">Google Map — today&rsquo;s pin</span>
-          </div>
+          <div className="media aspect-[16/10] w-full"><span className="cap">Google Map — today&rsquo;s pin</span></div>
           <div>
-            <h2 className="font-display text-2xl font-bold text-flag-blue">This week</h2>
-            <ul className="mt-4 divide-y divide-ink/10">
+            <h2 className="font-display text-2xl font-bold text-truck-blue">This week</h2>
+            <ul className="mt-4 divide-y divide-navy/10">
               {schedule.map((s) => (
                 <li key={s.day} className="flex items-center justify-between py-3">
                   <div>
-                    <p className="font-body text-sm font-bold text-ink">
-                      {s.day} {s.live && <span className="ml-2 rounded bg-flag-red px-2 py-0.5 text-[10px] font-bold uppercase text-white">Live</span>}
+                    <p className="font-body text-sm font-bold text-navy-deep">
+                      {s.day} {s.live && <span className="ml-2 bg-truck-red px-2 py-0.5 text-[10px] font-bold uppercase text-white">Live</span>}
                     </p>
-                    <p className="font-body text-sm text-ink/70">{s.spot}</p>
+                    <p className="font-body text-sm text-navy-deep/70">{s.spot}</p>
                   </div>
-                  <span className="font-body text-sm text-ink/60">{s.time}</span>
+                  <span className="font-body text-sm text-navy-deep/60">{s.time}</span>
                 </li>
               ))}
             </ul>
           </div>
         </div>
-
-        <p className="mt-6 font-body text-xs italic text-ink/50">
-          Placeholder schedule — connect to live data so Jeannie can update from her phone.
+        <p className="mt-6 font-body text-xs italic text-navy-deep/50">
+          Placeholder schedule. Connect to live data so Jeannie can update from her phone.
         </p>
       </div>
     </section>

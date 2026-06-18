@@ -1,225 +1,200 @@
 import Link from "next/link";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import Reveal from "./components/Reveal";
 
 export default function Home() {
   return (
     <main>
-      <Nav overInk />
-
-      {/* ---------------- HERO ---------------- */}
-      <section className="relative overflow-hidden bg-ink text-ivory">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-70"
-          style={{
-            background:
-              "radial-gradient(80% 60% at 75% 15%, rgba(115,38,55,0.55), transparent 60%), radial-gradient(50% 50% at 15% 90%, rgba(199,164,90,0.18), transparent 60%)",
-          }}
+      {/* ============== HERO: food-plating video ============== */}
+      <section className="relative min-h-screen text-cream">
+        <Nav light />
+        {/* Background media. Poster shows now; drop the plating loop in later:
+            add  <source src="/hero-plating.mp4" type="video/mp4" />  and the
+            video autoplays over the poster with zero layout change. */}
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          poster="/hero-poster.jpg"
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden
         />
-        <div className="shell relative grid items-center gap-12 pb-20 pt-40 md:grid-cols-[1.05fr_0.95fr] md:pb-28 md:pt-44">
-          <div>
-            <p className="eyebrow rise rise-1">North Georgia Catering</p>
-            <h1 className="rise rise-2 mt-5 text-[2.7rem] leading-[1.05] sm:text-6xl">
-              Homemade flavors for your most important moments.
+        <div className="scrim absolute inset-0" />
+
+        <div className="shell relative flex min-h-screen flex-col justify-end pb-24 pt-40">
+          <Reveal className="max-w-3xl">
+            <p className="label text-gold-soft">North Georgia &middot; Catering</p>
+            <h1 className="mt-6 font-display text-[3.4rem] font-medium leading-[1.02] sm:text-7xl">
+              A table worth gathering around.
             </h1>
-            <p className="es rise rise-2 mt-3 text-xl sm:text-2xl">
-              Sabor que se siente como en casa.
+            <p className="mt-7 max-w-md font-body text-lg leading-relaxed text-cream/80">
+              Latin and American catering for weddings and celebrations, made by
+              hand, with a little spice.
             </p>
-            <p className="rise rise-3 mt-6 max-w-md font-body text-base leading-relaxed text-ivory/75">
-              Latin &amp; American catering for weddings, showers, and
-              celebrations across North Georgia. Crafted by Jeannie, served with
-              sabor &amp; love.
-            </p>
-            <div className="rise rise-4 mt-9 flex flex-wrap items-center gap-6">
-              <Link href="/quote" className="btn-gold">
-                Request a Quote
-              </Link>
-              <Link href="/truck" className="btn-ghost">
-                Find the food truck <span aria-hidden>&rarr;</span>
-              </Link>
+            <div className="mt-10 flex flex-wrap items-center gap-8">
+              <Link href="/quote" className="btn-gold">Request a quote</Link>
+              <Link href="/about" className="link-ed text-cream">Meet Jeannie</Link>
             </div>
-          </div>
+          </Reveal>
+        </div>
+        <span className="absolute bottom-7 right-6 z-10 font-body text-[11px] uppercase tracking-label text-cream/45 md:right-12">
+          Plated by hand
+        </span>
+      </section>
 
-          <div className="rise rise-3 photo-ph aspect-[4/5] w-full">
-            <span>Signature event photo</span>
-          </div>
+      {/* ============== OPENING STATEMENT ============== */}
+      <section className="bg-cream">
+        <div className="shell py-28 md:py-40">
+          <Reveal className="max-w-4xl">
+            <p className="font-display text-3xl leading-[1.25] text-navy sm:text-[2.7rem] sm:leading-[1.22]">
+              For more than ten years, Jeannie has cooked for the people she
+              loves. Now she sets the table for yours.
+            </p>
+            <p className="es mt-8 text-2xl">Flavor that feels like home.</p>
+          </Reveal>
         </div>
       </section>
 
-      {/* ---------------- TWO PATHS ---------------- */}
-      <section className="bg-ivory">
-        <div className="shell py-20 md:py-28">
-          <p className="eyebrow text-center">Two ways to gather</p>
-          <h2 className="mx-auto mt-3 max-w-2xl text-center text-3xl text-ink sm:text-4xl">
-            One kitchen, two kinds of celebration.
-          </h2>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
-            <Link
-              href="/wedding-catering"
-              className="group rounded-2xl border border-cocoa/10 bg-white p-9 transition-shadow hover:shadow-[0_18px_50px_-24px_rgba(27,20,24,0.4)]"
-            >
-              <div className="photo-ph mb-7 aspect-[16/10] w-full">
-                <span>Wedding tablescape</span>
-              </div>
-              <p className="es text-base">Para tu día especial</p>
-              <h3 className="mt-1 text-2xl text-ink">Catering your special day</h3>
-              <p className="mt-3 font-body text-[15px] leading-relaxed text-cocoa/80">
-                Weddings, showers, and celebrations. Full-service and planned
-                around you, so you can be present for every moment.
-              </p>
-              <span className="mt-6 inline-flex items-center gap-2 font-body text-sm font-semibold text-vino transition-colors group-hover:text-vino-soft">
-                Explore catering <span aria-hidden>&rarr;</span>
-              </span>
+      {/* ============== TWO WORLDS (asymmetric, not a card grid) ============== */}
+      <section className="bg-cream-deep">
+        <div className="shell space-y-20 py-24 md:space-y-28 md:py-32">
+          {/* Catering — the larger, dominant block */}
+          <Reveal className="grid items-center gap-10 md:grid-cols-[1.25fr_1fr]">
+            <Link href="/wedding-catering" className="media aspect-[16/10] w-full">
+              <span className="cap">Wedding tablescape</span>
             </Link>
-
-            <Link
-              href="/truck"
-              className="group rounded-2xl border border-cocoa/10 bg-white p-9 transition-shadow hover:shadow-[0_18px_50px_-24px_rgba(26,86,196,0.35)]"
-            >
-              <div className="photo-ph mb-7 aspect-[16/10] w-full">
-                <span>The food truck</span>
-              </div>
-              <p className="es text-base">A la calle</p>
-              <h3 className="mt-1 text-2xl text-ink">Catch the food truck</h3>
-              <p className="mt-3 font-body text-[15px] leading-relaxed text-cocoa/80">
-                Street-style Latin &amp; American favorites, out in the North
-                Georgia community. Find us, or bring us to your event.
-              </p>
-              <span className="mt-6 inline-flex items-center gap-2 font-body text-sm font-semibold text-flag-blue">
-                Find the truck <span aria-hidden>&rarr;</span>
-              </span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ---------------- SOCIAL PROOF ---------------- */}
-      <section className="bg-vino text-ivory">
-        <div className="shell py-20 md:py-24">
-          <p className="eyebrow text-center text-gold-soft">
-            Trusted by North Georgia families
-          </p>
-          <div className="mt-12 grid gap-10 md:grid-cols-3">
-            {/* PLACEHOLDER testimonials — replace with real client quotes */}
-            {[
-              {
-                q: "Jeannie made our wedding feel like a family gathering. Every guest asked who catered.",
-                n: "Placeholder — Bride, Dahlonega",
-              },
-              {
-                q: "The charcuterie boards were stunning and the food was unforgettable. Worth every penny.",
-                n: "Placeholder — Host, Cumming",
-              },
-              {
-                q: "She handled everything so we could enjoy the day. Sabor and heart in every bite.",
-                n: "Placeholder — Mother of the Bride",
-              },
-            ].map((t, i) => (
-              <figure key={i} className="text-center md:text-left">
-                <div className="mb-3 text-gold-soft" aria-hidden>
-                  &#9733;&#9733;&#9733;&#9733;&#9733;
-                </div>
-                <blockquote className="font-display text-lg italic leading-snug">
-                  &ldquo;{t.q}&rdquo;
-                </blockquote>
-                <figcaption className="mt-4 font-body text-xs uppercase tracking-[0.18em] text-ivory/60">
-                  {t.n}
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ---------------- FEATURED WORK ---------------- */}
-      <section className="bg-ivory">
-        <div className="shell py-20 md:py-28">
-          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
             <div>
-              <p className="eyebrow">Recent celebrations</p>
-              <h2 className="mt-3 max-w-xl text-3xl text-ink sm:text-4xl">
-                Celebrating special moments, one bite at a time.
+              <p className="label">The flagship</p>
+              <h2 className="mt-4 font-display text-4xl text-navy sm:text-5xl">
+                Weddings &amp; celebrations
               </h2>
-              <p className="es mt-2 text-lg">Un bocado a la vez.</p>
+              <p className="mt-5 max-w-md font-body text-[15px] leading-relaxed text-charcoal/80">
+                Full-service catering planned around your day, so you can be
+                present for every moment of it. Custom menus, charcuterie, and
+                homemade flavors that feel like family.
+              </p>
+              <Link href="/wedding-catering" className="link-ed mt-7 inline-block text-navy">
+                Explore catering
+              </Link>
             </div>
-            <Link href="/gallery" className="link-quiet whitespace-nowrap">
-              View the gallery &rarr;
-            </Link>
-          </div>
+          </Reveal>
 
-          <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3">
-            {[
-              "Charcuterie board",
-              "Plated dinner",
-              "Dessert table",
-              "Outdoor reception",
-              "Appetizer spread",
-              "Family-style entrees",
-            ].map((label, i) => (
-              <div
-                key={i}
-                className={`photo-ph ${i % 5 === 0 ? "aspect-[4/5]" : "aspect-square"}`}
-              >
-                <span>{label}</span>
-              </div>
-            ))}
+          {/* Food truck — secondary, offset the other way and smaller */}
+          <Reveal className="grid items-center gap-10 md:grid-cols-[1fr_1.25fr]">
+            <div className="md:order-2">
+              <Link href="/truck" className="media aspect-[16/10] w-full">
+                <span className="cap">The food truck</span>
+              </Link>
+            </div>
+            <div className="md:order-1">
+              <p className="label text-truck-red">Out in the community</p>
+              <h2 className="mt-4 font-display text-4xl text-navy sm:text-5xl">
+                The food truck
+              </h2>
+              <p className="mt-5 max-w-md font-body text-[15px] leading-relaxed text-charcoal/80">
+                Street-style Latin and American favorites, served fresh wherever
+                we park. Catch us around North Georgia, or bring the truck to
+                your event.
+              </p>
+              <Link href="/truck" className="link-ed mt-7 inline-block text-navy">
+                Find the truck
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ============== SELECTED CELEBRATIONS (editorial photo set) ============== */}
+      <section className="bg-cream">
+        <div className="shell py-24 md:py-32">
+          <Reveal className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+            <div>
+              <p className="label">Selected celebrations</p>
+              <h2 className="mt-4 max-w-xl font-display text-4xl leading-tight text-navy sm:text-5xl">
+                Special moments, one bite at a time.
+              </h2>
+            </div>
+            <Link href="/gallery" className="link-ed text-navy">View the gallery</Link>
+          </Reveal>
+
+          {/* asymmetric arrangement, varied sizes */}
+          <div className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-12">
+            <Reveal className="md:col-span-7">
+              <div className="media aspect-[16/11] w-full"><span className="cap">Plated dinner</span></div>
+            </Reveal>
+            <Reveal delay={0.08} className="md:col-span-5">
+              <div className="media aspect-[16/11] w-full md:aspect-[4/5]"><span className="cap">Charcuterie</span></div>
+            </Reveal>
+            <Reveal delay={0.04} className="md:col-span-4">
+              <div className="media aspect-square w-full"><span className="cap">Dessert table</span></div>
+            </Reveal>
+            <Reveal delay={0.1} className="md:col-span-8">
+              <div className="media aspect-[16/9] w-full"><span className="cap">Reception spread</span></div>
+            </Reveal>
           </div>
         </div>
       </section>
 
-      {/* ---------------- MEET JEANNIE ---------------- */}
-      <section className="bg-sand">
-        <div className="shell grid items-center gap-12 py-20 md:grid-cols-[0.9fr_1.1fr] md:py-28">
-          <div className="photo-ph aspect-[4/5] w-full">
-            <span>Portrait of Jeannie</span>
-          </div>
-          <div>
-            <p className="eyebrow">Meet your guide</p>
-            <h2 className="mt-3 text-3xl text-ink sm:text-4xl">
+      {/* ============== MEET JEANNIE ============== */}
+      <section className="bg-cream-deep">
+        <div className="shell grid items-center gap-14 py-24 md:grid-cols-[1fr_1.1fr] md:py-32">
+          <Reveal>
+            <div className="media aspect-[4/5] w-full"><span className="cap">Portrait of Jeannie</span></div>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <p className="label">Meet your guide</p>
+            <h2 className="mt-6 font-display text-4xl text-navy sm:text-5xl">
               Hi family, I&rsquo;m Jeannie.
             </h2>
-            <div className="mt-6 space-y-4 font-body text-[15px] leading-relaxed text-cocoa/85">
+            <div className="mt-6 space-y-4 font-body text-[15px] leading-relaxed text-charcoal/85">
               <p>
-                A Buffalo native, Puerto Rican, and now based in North Georgia.
-                I&rsquo;m a proud mom of five who has always loved cooking and
-                bringing people together through food.
+                A Buffalo native, Puerto Rican, and now based in North Georgia. A
+                proud mom of five who has always loved cooking and bringing people
+                together through food.
               </p>
               <p>
                 For over ten years I&rsquo;ve catered for family, friends, and
-                special occasions. I specialize in homemade American and Latin
-                cuisine made with sabor, love, and flavors that feel like home.
-              </p>
-              <p className="es mt-1 text-lg">
-                I&rsquo;d love to be part of your special day.
+                special occasions. I cook homemade American and Latin food made
+                with love, care, and a little spice.
               </p>
             </div>
-            <Link href="/about" className="mt-8 inline-flex btn-gold">
+            <Link href="/about" className="btn-outline mt-9 border-navy text-navy">
               About Jeannie
             </Link>
-          </div>
+          </Reveal>
         </div>
       </section>
 
-      {/* ---------------- FINAL CTA ---------------- */}
-      <section className="relative overflow-hidden bg-ink text-ivory">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-70"
-          style={{
-            background:
-              "radial-gradient(60% 80% at 50% 0%, rgba(115,38,55,0.6), transparent 65%)",
-          }}
-        />
-        <div className="shell relative py-24 text-center md:py-28">
-          <h2 className="mx-auto max-w-2xl text-4xl leading-tight sm:text-5xl">
-            Let&rsquo;s make your celebration unforgettable.
-          </h2>
-          <p className="es mt-3 text-2xl">Celebremos juntos.</p>
-          <div className="mt-9 flex justify-center">
-            <Link href="/quote" className="btn-gold">
-              Request a Quote
-            </Link>
-          </div>
+      {/* ============== ONE PULL QUOTE (restrained social proof) ============== */}
+      <section className="bg-navy text-cream">
+        <div className="shell py-28 text-center md:py-36">
+          <Reveal className="mx-auto max-w-3xl">
+            <div className="mb-6 text-gold" aria-hidden>&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            {/* PLACEHOLDER testimonial */}
+            <blockquote className="font-display text-2xl italic leading-snug sm:text-4xl sm:leading-[1.3]">
+              &ldquo;Jeannie made our wedding feel like a family gathering. Every
+              single guest asked who catered.&rdquo;
+            </blockquote>
+            <p className="mt-8 font-body text-xs uppercase tracking-label text-cream/55">
+              Placeholder &middot; Bride, Dahlonega
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ============== CLOSING ============== */}
+      <section className="bg-cream">
+        <div className="shell py-28 text-center md:py-36">
+          <Reveal className="mx-auto max-w-2xl">
+            <h2 className="font-display text-4xl leading-tight text-navy sm:text-6xl">
+              Let&rsquo;s set your table.
+            </h2>
+            <div className="mt-10 flex justify-center">
+              <Link href="/quote" className="btn-gold">Request a quote</Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 

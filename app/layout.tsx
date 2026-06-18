@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Fraunces, Mulish } from "next/font/google";
+import { Fraunces, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
+import SmoothScroll from "./components/SmoothScroll";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -9,26 +10,24 @@ const fraunces = Fraunces({
   axes: ["opsz", "SOFT"],
 });
 
-const mulish = Mulish({
+const hanken = Hanken_Grotesk({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-mulish",
+  variable: "--font-hanken",
 });
 
 export const metadata: Metadata = {
-  title: "La Cocina de Jeannie | North Georgia Catering",
+  title: "Jeannie & Co. | North Georgia Catering",
   description:
-    "Latin & American catering for weddings, showers, and celebrations across North Georgia. Homemade flavors, con sabor & love.",
+    "Elevated catering for weddings and celebrations across North Georgia, by Jeannie. Homemade flavors with a little spice.",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${mulish.variable}`}>
-      <body>{children}</body>
+    <html lang="en" className={`${fraunces.variable} ${hanken.variable}`}>
+      <body>
+        <SmoothScroll>{children}</SmoothScroll>
+      </body>
     </html>
   );
 }
