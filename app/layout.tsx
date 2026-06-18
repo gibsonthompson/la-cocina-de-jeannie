@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Fraunces, Hanken_Grotesk } from "next/font/google";
+import { Cormorant_Garamond, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "./components/SmoothScroll";
 
-const fraunces = Fraunces({
+const fraunces = Cormorant_Garamond({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-fraunces",
-  axes: ["opsz", "SOFT"],
+  weight: ["500", "600", "700"],
 });
 
 const hanken = Hanken_Grotesk({
