@@ -1,104 +1,62 @@
 "use client";
-
 import { useState } from "react";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 
-/**
- * Inquiry form. On submit it shows a confirmation. To go live, POST to an
- * /api/leads route that: 1) inserts into Supabase `leads` (source: wedding |
- * event | other), 2) sends an SMS to Jeannie, 3) emails the customer a
- * confirmation. Same pattern as RSA's booking form.
- */
+const eventTypes = ["Wedding","Shower","Birthday","Quinceañera","Corporate","Private party","Other"];
+
 export default function Quote() {
   const [sent, setSent] = useState(false);
-
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setSent(true);
+  if (sent) {
+    return (
+      <main className="bg-cream">
+        <Nav />
+        <section className="shell flex min-h-[70vh] flex-col items-center justify-center py-32 text-center">
+          <p className="label">Sent</p>
+          <h1 className="mt-4 font-display text-5xl text-navy sm:text-6xl">Thank you.</h1>
+          <p className="mt-5 max-w-md font-body text-lg leading-relaxed text-charcoal/80">
+            We&rsquo;ll be in touch within 24 hours with a custom menu and quote.
+          </p>
+        </section>
+        <Footer />
+      </main>
+    );
   }
-
   return (
-    <main>
-      <Nav light />
-      <header className="bg-navy text-cream">
-        <div className="shell pb-16 pt-44">
-          <p className="label text-gold-soft">Request a quote</p>
-          <h1 className="mt-5 max-w-2xl font-display text-4xl leading-[1.05] sm:text-6xl">
-            Tell us about your celebration.
-          </h1>
+    <main className="bg-cream">
+      <Nav />
+      <section className="shell grid gap-16 pb-28 pt-36 md:grid-cols-[1fr_1.2fr]">
+        <div>
+          <p className="label">Inquire</p>
+          <h1 className="mt-4 font-display text-5xl text-navy sm:text-6xl">Tell us about your celebration.</h1>
+          <p className="mt-6 max-w-sm font-body text-[15px] leading-relaxed text-charcoal/80">
+            Share a few details about your event and we&rsquo;ll get back to you within 24
+            hours with a custom menu and quote.
+          </p>
+          <p className="mt-8 font-body text-sm text-charcoal/60">Prefer to talk? <a href="tel:+10000000000" className="link-ed text-navy">(000) 000-0000</a></p>
         </div>
-      </header>
-
-      <section className="bg-cream">
-        <div className="shell max-w-prose2 py-20">
-          {sent ? (
-            <div className="border border-gold/40 bg-cream-deep p-10 text-center">
-              <h2 className="font-display text-3xl text-navy">Thank you!</h2>
-              <p className="mx-auto mt-5 max-w-md font-body text-[15px] leading-relaxed text-charcoal/80">
-                Jeannie received your request and will reach out personally within
-                24 hours.
-              </p>
+        <div className="border border-navy/12 bg-cream-deep/30 p-8 md:p-10">
+          <div className="grid gap-5">
+            <div className="grid gap-5 sm:grid-cols-2">
+              <label className="block"><span className="label">Your name</span><input className="mt-2 w-full border border-navy/15 bg-cream px-4 py-3 font-body text-sm outline-none focus:border-gold" placeholder="First and last" /></label>
+              <label className="block"><span className="label">Email</span><input type="email" className="mt-2 w-full border border-navy/15 bg-cream px-4 py-3 font-body text-sm outline-none focus:border-gold" placeholder="you@email.com" /></label>
             </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid gap-6 sm:grid-cols-2">
-                <Field label="Name" name="name" required />
-                <Field label="Phone" name="phone" type="tel" required />
-              </div>
-              <Field label="Email" name="email" type="email" required />
-              <div className="grid gap-6 sm:grid-cols-2">
-                <SelectField label="Event type" name="eventType" required
-                  options={["Wedding", "Shower", "Birthday", "Quinceañera", "Corporate", "Other"]} />
-                <Field label="Event date" name="eventDate" type="date" />
-              </div>
-              <div className="grid gap-6 sm:grid-cols-2">
-                <Field label="Estimated guest count" name="guests" type="number" />
-                <Field label="Location or venue (city)" name="location" />
-              </div>
-              <SelectField label="Service style" name="service"
-                options={["Full-service", "Drop-off", "Not sure yet"]} />
-              <TextArea label="Tell us about your event" name="message" />
-              <button type="submit" className="btn-gold w-full sm:w-auto">Send request</button>
-              <p className="font-body text-xs text-charcoal/55">
-                We&rsquo;ll text and email you back within 24 hours.
-              </p>
-            </form>
-          )}
+            <div className="grid gap-5 sm:grid-cols-2">
+              <label className="block"><span className="label">Event date</span><input type="date" className="mt-2 w-full border border-navy/15 bg-cream px-4 py-3 font-body text-sm outline-none focus:border-gold" /></label>
+              <label className="block"><span className="label">Guest count</span><input type="number" className="mt-2 w-full border border-navy/15 bg-cream px-4 py-3 font-body text-sm outline-none focus:border-gold" placeholder="Approximate is fine" /></label>
+            </div>
+            <label className="block"><span className="label">Type of event</span>
+              <select className="mt-2 w-full border border-navy/15 bg-cream px-4 py-3 font-body text-sm outline-none focus:border-gold">
+                {eventTypes.map((t)=>(<option key={t}>{t}</option>))}
+              </select>
+            </label>
+            <label className="block"><span className="label">Tell us what you&rsquo;re thinking</span><textarea rows={4} className="mt-2 w-full border border-navy/15 bg-cream px-4 py-3 font-body text-sm outline-none focus:border-gold" placeholder="The vibe, the food you love, anything we should know." /></label>
+            <button onClick={()=>setSent(true)} className="btn-gold mt-2 w-full">Send it to Jeannie</button>
+            <p className="font-body text-xs text-charcoal/50">This is a placeholder form. Hook it up to your leads table to go live.</p>
+          </div>
         </div>
       </section>
       <Footer />
     </main>
-  );
-}
-
-const labelCls = "mb-2 block font-body text-[11px] font-semibold uppercase tracking-label text-charcoal/70";
-const inputCls = "w-full border border-navy/20 bg-cream px-4 py-3 font-body text-sm text-navy outline-none transition-colors focus:border-gold";
-
-function Field({ label, name, type = "text", required = false }: { label: string; name: string; type?: string; required?: boolean }) {
-  return (
-    <div>
-      <label htmlFor={name} className={labelCls}>{label} {required && <span className="text-truck-red">*</span>}</label>
-      <input id={name} name={name} type={type} required={required} className={inputCls} />
-    </div>
-  );
-}
-function SelectField({ label, name, options, required = false }: { label: string; name: string; options: string[]; required?: boolean }) {
-  return (
-    <div>
-      <label htmlFor={name} className={labelCls}>{label} {required && <span className="text-truck-red">*</span>}</label>
-      <select id={name} name={name} required={required} defaultValue="" className={inputCls}>
-        <option value="" disabled>Select…</option>
-        {options.map((o) => (<option key={o} value={o}>{o}</option>))}
-      </select>
-    </div>
-  );
-}
-function TextArea({ label, name }: { label: string; name: string }) {
-  return (
-    <div>
-      <label htmlFor={name} className={labelCls}>{label}</label>
-      <textarea id={name} name={name} rows={4} className={inputCls} />
-    </div>
   );
 }
