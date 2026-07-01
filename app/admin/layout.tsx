@@ -1,4 +1,3 @@
-import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import Sidebar from "./components/Sidebar";
 
@@ -7,8 +6,11 @@ export const metadata = { title: "Admin | Jeannie & Co." };
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
-  // /admin/login renders its own tree; middleware handles the redirect there.
-  if (!user) redirect("/admin/login");
+
+  // No user means this is the login page (middleware redirects every other
+  // /admin route here). Render it bare, with no shell and no redirect, so
+  // there's no layout/login redirect loop.
+  if (!user) return <>{children}</>;
 
   return (
     <div className="min-h-screen bg-[#F7F5EF] font-body text-[#2A2521]">
