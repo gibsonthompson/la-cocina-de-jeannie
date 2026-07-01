@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 const steps = [
   { n:"01", t:"Tell us about your day", d:"Share your date, guest count, and the feeling you're after." },
-  { n:"02", t:"We build your menu & quote", d:"A custom menu and a clear quote, tailored to your celebration." },
+  { n:"02", t:"We build your menu", d:"A custom menu tailored to your celebration, with everything laid out clearly." },
   { n:"03", t:"We cater, you celebrate", d:"Setup, serving, and cleanup handled, so you can be present." },
 ];
 const faqs = [
@@ -38,7 +38,7 @@ export default function WeddingCatering() {
               so your day feels like a family gathering and you get to enjoy every
               minute of it.
             </p>
-            <div className="mt-9"><Link href="/quote" className="btn-gold">Request a quote</Link></div>
+            <div className="mt-9"><Link href="/quote" className="btn-gold">Check your date</Link></div>
           </Reveal>
         </div>
       </section>
@@ -96,7 +96,7 @@ export default function WeddingCatering() {
         <Image src="/photos/05-champagne-evening.jpg" alt="" fill sizes="100vw" className="object-cover" />
         <div className="absolute inset-0 bg-navy-deep/70" />
         <div className="shell relative py-28 text-center md:py-32">
-          <Reveal className="mx-auto max-w-2xl"><h2 className="font-display text-5xl leading-tight sm:text-6xl">Let&rsquo;s plan your wedding menu.</h2><p className="mt-5 font-body text-lg text-cream/80">Tell us about your wedding and we&rsquo;ll get back to you within 24 hours.</p><div className="mt-9 flex justify-center"><Link href="/quote" className="btn-gold">Request a quote</Link></div></Reveal>
+          <Reveal className="mx-auto max-w-2xl"><h2 className="font-display text-5xl leading-tight sm:text-6xl">Let&rsquo;s plan your wedding menu.</h2><p className="mt-5 font-body text-lg text-cream/80">Tell us about your wedding and we&rsquo;ll get back to you within 24 hours.</p><div className="mt-9 flex justify-center"><Link href="/quote" className="btn-gold">Start planning</Link></div></Reveal>
         </div>
       </section>
       <Footer />

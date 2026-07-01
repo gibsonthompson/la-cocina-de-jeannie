@@ -15,7 +15,7 @@ export default function Quote() {
           <p className="label">Sent</p>
           <h1 className="mt-4 font-display text-5xl text-navy sm:text-6xl">Thank you.</h1>
           <p className="mt-5 max-w-md font-body text-lg leading-relaxed text-charcoal/80">
-            We&rsquo;ll be in touch within 24 hours with a custom menu and quote.
+            We&rsquo;ll be in touch within 24 hours with a custom menu for your event.
           </p>
         </section>
         <Footer />
@@ -28,10 +28,10 @@ export default function Quote() {
       <section className="shell grid gap-16 pb-28 pt-36 md:grid-cols-[1fr_1.2fr]">
         <div>
           <p className="label">Inquire</p>
-          <h1 className="mt-4 font-display text-5xl text-navy sm:text-6xl">Tell us about your celebration.</h1>
+          <h1 className="mt-4 font-display text-5xl text-navy sm:text-6xl">Tell us about your event.</h1>
           <p className="mt-6 max-w-sm font-body text-[15px] leading-relaxed text-charcoal/80">
             Share a few details about your event and we&rsquo;ll get back to you within 24
-            hours with a custom menu and quote.
+            hours with a custom menu for your event.
           </p>
           <p className="mt-8 font-body text-sm text-charcoal/60">Prefer to talk? <a href="tel:+10000000000" className="link-ed text-navy">(000) 000-0000</a></p>
         </div>

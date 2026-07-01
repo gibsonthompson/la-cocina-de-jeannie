@@ -31,7 +31,7 @@ export default function EventCatering() {
               Showers, birthdays, quinceañeras, corporate events, and private parties
               across North Georgia, catered with care and a little spice.
             </p>
-            <div className="mt-9"><Link href="/quote" className="btn-gold">Request a quote</Link></div>
+            <div className="mt-9"><Link href="/quote" className="btn-gold">Tell us about your event</Link></div>
           </Reveal>
         </div>
       </section>
@@ -70,7 +70,7 @@ export default function EventCatering() {
 
       <section className="bg-navy text-cream">
         <div className="shell py-24 text-center md:py-28">
-          <Reveal className="mx-auto max-w-2xl"><h2 className="font-display text-4xl sm:text-5xl">Tell us what you&rsquo;re celebrating.</h2><div className="mt-9 flex justify-center"><Link href="/quote" className="btn-gold">Request a quote</Link></div></Reveal>
+          <Reveal className="mx-auto max-w-2xl"><h2 className="font-display text-4xl sm:text-5xl">Tell us what you&rsquo;re celebrating.</h2><div className="mt-9 flex justify-center"><Link href="/quote" className="btn-gold">Start planning</Link></div></Reveal>
         </div>
       </section>
       <Footer />

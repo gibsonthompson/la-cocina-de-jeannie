@@ -47,8 +47,8 @@ export default function Menus() {
             </div>
           ))}
         </div>
-        <p className="mt-8 font-body text-sm italic text-charcoal/55">Final dishes and pricing come with your custom quote.</p>
-        <div className="mt-10"><Link href="/quote" className="btn-gold">Request a custom menu</Link></div>
+        <p className="mt-8 font-body text-sm italic text-charcoal/55">Final dishes come together when we plan your event.</p>
+        <div className="mt-10"><Link href="/quote" className="btn-gold">Plan your menu</Link></div>
       </section>
       <Footer />
     </main>

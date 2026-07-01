@@ -28,7 +28,7 @@ export default function About() {
               <p>I specialize in homemade American and Latin cuisine made with love, care, and flavors that feel like home. Whether it&rsquo;s a family gathering, a celebration, or a special event, I would love to be part of your special day.</p>
             </div>
             <p className="es mt-7 text-xl">Celebrating special moments, one bite at a time.</p>
-            <Link href="/quote" className="btn-gold mt-8">Request a quote</Link>
+            <Link href="/quote" className="btn-gold mt-8">Talk to Jeannie</Link>
           </Reveal>
         </div>
       </section>

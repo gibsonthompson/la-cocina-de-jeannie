@@ -21,7 +21,7 @@ export default function Home() {
               celebrations. Built by hand, served with a little spice.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-7">
-              <Link href="/quote" className="btn-gold">Request a quote</Link>
+              <Link href="/quote" className="btn-gold">Start planning</Link>
               <Link href="/menus" className="link-ed text-cream">Explore the menu</Link>
             </div>
           </Reveal>
@@ -119,7 +119,7 @@ export default function Home() {
           <div className="mt-14 grid gap-px overflow-hidden border border-cream/10 bg-cream/10 md:grid-cols-3">
             {[
               { n:"01", t:"Tell us about your day", d:"Share your date, guest count, and the feeling you're after." },
-              { n:"02", t:"We build your menu & quote", d:"A custom menu and a clear quote, tailored to your celebration." },
+              { n:"02", t:"We build your menu", d:"A custom menu tailored to your celebration, with everything laid out clearly." },
               { n:"03", t:"We cater, you celebrate", d:"Setup, serving, and cleanup handled, so you can enjoy your guests." },
             ].map((s)=>(
               <div key={s.n} className="bg-navy p-9">
@@ -135,28 +135,23 @@ export default function Home() {
       {/* ================= PACKAGES (with starting-at) ================= */}
       <section className="bg-cream">
         <div className="shell py-24 md:py-32">
-          <Reveal className="max-w-2xl"><p className="label">Sample packages</p>
-            <h2 className="mt-4 font-display text-4xl text-navy sm:text-5xl">A starting point, not a limit.</h2></Reveal>
+          <Reveal className="max-w-2xl"><p className="label">Ways we serve</p>
+            <h2 className="mt-4 font-display text-4xl text-navy sm:text-5xl">Built around your celebration.</h2></Reveal>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {[
-              { t:"Grazing & charcuterie", p:"$18", d:"Artisan boards and grazing tables, styled to impress." },
-              { t:"Passed appetizers", p:"$26", d:"Hot and cold bites, crostini, and homemade favorites." },
-              { t:"Full-service event", p:"$42", d:"Plated or buffet entrees with setup, serving, and cleanup." },
+              { t:"Grazing & charcuterie", d:"Artisan boards and grazing tables, styled to impress." },
+              { t:"Passed appetizers", d:"Hot and cold bites, crostini, and homemade favorites." },
+              { t:"Full-service events", d:"Plated or buffet entrees with setup, serving, and cleanup." },
             ].map((p)=>(
               <Reveal key={p.t}>
                 <div className="flex h-full flex-col border border-navy/12 p-9">
                   <h3 className="font-display text-2xl text-navy">{p.t}</h3>
-                  <p className="mt-4 font-display text-3xl text-gold">{p.p}<span className="font-body text-sm text-charcoal/60"> / guest</span></p>
-                  <p className="mt-1 font-body text-[11px] uppercase tracking-label text-charcoal/45">Starting at &middot; placeholder</p>
                   <p className="mt-4 font-body text-[15px] leading-relaxed text-charcoal/80">{p.d}</p>
-                  <Link href="/quote" className="link-ed mt-auto pt-7 text-navy">Request this package</Link>
+                  <Link href="/quote" className="link-ed mt-auto pt-7 text-navy">Start planning</Link>
                 </div>
               </Reveal>
             ))}
           </div>
-          <p className="mt-8 font-body text-sm italic text-charcoal/55">
-            Final pricing depends on guest count, menu, and service style. Placeholder figures, to be set.
-          </p>
         </div>
       </section>
 
@@ -216,8 +211,8 @@ export default function Home() {
         <div className="shell relative py-28 text-center md:py-36">
           <Reveal className="mx-auto max-w-2xl">
             <h2 className="font-display text-5xl leading-tight sm:text-6xl">Let&rsquo;s set your table.</h2>
-            <p className="mt-5 font-body text-lg text-cream/80">Tell us about your celebration and we&rsquo;ll send a custom menu and quote within 24 hours.</p>
-            <div className="mt-9 flex justify-center"><Link href="/quote" className="btn-gold">Request a quote</Link></div>
+            <p className="mt-5 font-body text-lg text-cream/80">Tell us about your celebration and we&rsquo;ll get back to you within 24 hours with a custom menu.</p>
+            <div className="mt-9 flex justify-center"><Link href="/quote" className="btn-gold">Check your date</Link></div>
           </Reveal>
         </div>
       </section>
