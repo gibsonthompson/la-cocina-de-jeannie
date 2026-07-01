@@ -72,3 +72,42 @@ export async function signOut() {
   await supabase.auth.signOut();
   redirect("/admin/login");
 }
+
+export interface CalendarEventInput {
+  id?: string;
+  title: string;
+  date: string;
+  event_type: string | null;
+  guest_count: number | null;
+  location: string | null;
+  notes: string | null;
+}
+
+export async function saveCalendarEvent(input: CalendarEventInput) {
+  const supabase = await createClient();
+  if (!input.title?.trim() || !input.date) return { error: "Title and date are required." };
+  const row = {
+    title: input.title.trim(),
+    date: input.date,
+    event_type: input.event_type?.trim() || null,
+    guest_count: input.guest_count ?? null,
+    location: input.location?.trim() || null,
+    notes: input.notes?.trim() || null,
+  };
+  const q = input.id
+    ? supabase.from("calendar_events").update(row).eq("id", input.id)
+    : supabase.from("calendar_events").insert(row);
+  const { error } = await q;
+  if (error) return { error: error.message };
+  revalidatePath("/admin/calendar");
+  revalidatePath("/admin");
+  return { ok: true };
+}
+
+export async function deleteCalendarEvent(id: string) {
+  const supabase = await createClient();
+  const { error } = await supabase.from("calendar_events").delete().eq("id", id);
+  if (error) return { error: error.message };
+  revalidatePath("/admin/calendar");
+  return { ok: true };
+}

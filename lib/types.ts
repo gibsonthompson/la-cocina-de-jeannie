@@ -31,3 +31,14 @@ export interface TruckStop {
   notes: string | null;
   status: TruckStopStatus;
 }
+
+export interface CalendarEvent {
+  id: string;
+  created_at: string;
+  title: string;
+  date: string;
+  event_type: string | null;
+  guest_count: number | null;
+  location: string | null;
+  notes: string | null;
+}
