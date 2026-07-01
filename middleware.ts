@@ -24,17 +24,17 @@ export async function middleware(request: NextRequest) {
   );
 
   const { data: { user } } = await supabase.auth.getUser();
-  const { pathname } = request.nextUrl;
-  const isAdmin = pathname.startsWith("/admin");
+  // normalize trailing slash so "/admin/login/" is still recognized as the login route
+  const pathname = request.nextUrl.pathname.replace(/\/+$/, "") || "/";
   const isLogin = pathname === "/admin/login";
 
-  if (isAdmin && !isLogin && !user) {
+  if (!user && !isLogin) {
     const url = request.nextUrl.clone();
     url.pathname = "/admin/login";
     url.searchParams.set("next", pathname);
     return NextResponse.redirect(url);
   }
-  if (isLogin && user) {
+  if (user && isLogin) {
     const url = request.nextUrl.clone();
     url.pathname = "/admin";
     url.searchParams.delete("next");
@@ -43,6 +43,7 @@ export async function middleware(request: NextRequest) {
   return response;
 }
 
+// exclude the login route from the matcher entirely as a second safeguard
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/admin((?!/login).*)"],
 };
