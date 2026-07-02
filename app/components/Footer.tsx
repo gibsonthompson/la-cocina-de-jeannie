@@ -6,7 +6,7 @@ export default function Footer() {
         <div>
           <p className="font-display text-2xl text-cream">Jeannie <span className="italic text-gold">&amp; Co.</span></p>
           <p className="mt-6 max-w-xs font-body text-sm leading-relaxed text-cream/70">Catering for the moments that matter, across North Georgia.</p>
-          <p className="mt-4 font-display text-lg italic text-gold">Made by hand, served with care.</p>
+          <p className="mt-4 font-display text-lg italic text-gold">Made with love, served with care.</p>
         </div>
         <div>
           <h3 className="label mb-5">Catering</h3>
